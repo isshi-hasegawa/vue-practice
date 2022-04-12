@@ -1,3 +1,12 @@
+const todoStorage = {
+  getStorage: () => {
+    return JSON.parse(localStorage.getItem('todos')) || [];
+  },
+  setStorage: (todos) => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }
+}
+
 new Vue({
   el: '#app',
   data () {
@@ -7,7 +16,7 @@ new Vue({
     }
   },
   mounted () {
-    this.todos = JSON.parse(localStorage.getItem('todos')) || [];
+    this.todos = todoStorage.getStorage()
   },
   methods: {
     addItem: function() {
@@ -17,15 +26,15 @@ new Vue({
         isDone: false
       }
       this.todos.push(todo)
-      localStorage.setItem('todos', JSON.stringify(this.todos))
+      todoStorage.setStorage(this.todos)
       this.newItem = ''
     },
     deleteItem: function(index) {
       this.todos.splice(index, 1)
-      localStorage.setItem('todos', JSON.stringify(this.todos))
+      todoStorage.setStorage(this.todos)
     },
     checkedItem: function() {
-      localStorage.setItem('todos', JSON.stringify(this.todos))
+      todoStorage.setStorage(this.todos)
     },
   }
 })
