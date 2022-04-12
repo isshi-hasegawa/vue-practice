@@ -5,7 +5,7 @@ new Vue({
     todos: []
   }),
   methods: {
-    addItem: function(event) {
+    addItem: function() {
       if(this.newItem === '') return
       let todo = {
         item: this.newItem,
