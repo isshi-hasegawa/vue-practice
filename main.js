@@ -1,21 +1,28 @@
 new Vue({
   el: '#app',
-  data: () => ({
-    newItem: '',
-    todos: []
-  }),
+  data () {
+    return {
+      newItem: '',
+      todos: []
+    }
+  },
+  mounted () {
+    this.todos = JSON.parse(localStorage.getItem('todos')) || [];
+  },
   methods: {
     addItem: function() {
       if(this.newItem === '') return
-      let todo = {
+      const todo = {
         item: this.newItem,
         isDone: false
       }
       this.todos.push(todo)
+      localStorage.setItem('todos', JSON.stringify(this.todos))
       this.newItem = ''
     },
     deleteItem: function(index) {
       this.todos.splice(index, 1)
+      localStorage.setItem('todos', JSON.stringify(this.todos))
     }
   }
 })
