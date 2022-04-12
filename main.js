@@ -23,6 +23,9 @@ new Vue({
     deleteItem: function(index) {
       this.todos.splice(index, 1)
       localStorage.setItem('todos', JSON.stringify(this.todos))
-    }
+    },
+    checkedItem: function() {
+      localStorage.setItem('todos', JSON.stringify(this.todos))
+    },
   }
 })
