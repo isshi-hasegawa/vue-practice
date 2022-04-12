@@ -19,6 +19,9 @@
                     <span :class="{ done: todo.isDone }">
                       {{ todo.item }}
                     </span>
+                    <button @click="updateItem(index)">
+                        Update
+                    </button>
                     <button @click="deleteItem(index)">
                         Delete
                     </button>
