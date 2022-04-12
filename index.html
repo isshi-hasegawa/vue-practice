@@ -11,7 +11,8 @@
             <h2>TODO List</h2>
             <form @submit.prevent>
                 <input type="text" v-model="newItem">
-                <button @click="addItem">Add</button>
+                <button v-show="!isEditable" @click="addItem">Add</button>
+                <button v-show="isEditable" @click="updateItem">Update</button>
             </form>
             <ul>
                 <li v-for="(todo, index) in todos">
@@ -19,8 +20,8 @@
                     <span :class="{ done: todo.isDone }">
                       {{ todo.item }}
                     </span>
-                    <button @click="updateItem(index)">
-                        Update
+                    <button @click="editItem(index)">
+                        Edit
                     </button>
                     <button @click="deleteItem(index)">
                         Delete
