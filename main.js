@@ -6,7 +6,6 @@ new Vue({
   }),
   methods: {
     addItem: function(event) {
-      // console.log('Clicked!')
       if(this.newItem === '') return
       let todo = {
         item: this.newItem,
@@ -16,8 +15,6 @@ new Vue({
       this.newItem = ''
     },
     deleteItem: function(index) {
-      // console.log('Delete!')
-      // console.log(index)
       this.todos.splice(index, 1)
     }
   }
