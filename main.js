@@ -1,6 +1,6 @@
 const todoStorage = {
   getStorage: () => {
-    return JSON.parse(localStorage.getItem('todos')) || [];
+    return JSON.parse(localStorage.getItem('todos')) || []
   },
   setStorage: (todos) => {
     localStorage.setItem('todos', JSON.stringify(todos))
@@ -21,8 +21,8 @@ new Vue({
     this.todos = todoStorage.getStorage()
   },
   methods: {
-    addItem: function() {
-      if(this.newItem === '') return
+    addItem: function () {
+      if (this.newItem === '') return
       const todo = {
         item: this.newItem,
         isDone: false
@@ -31,8 +31,8 @@ new Vue({
       todoStorage.setStorage(this.todos)
       this.newItem = ''
     },
-    updateItem: function(){
-      if(this.newItem === '') return
+    updateItem: function () {
+      if (this.newItem === '') return
       this.todos[this.editingItemIndex].item = this.newItem
       todoStorage.setStorage(this.todos)
       this.newItem = ''
@@ -43,12 +43,12 @@ new Vue({
       this.editingItemIndex = index
       this.isEditable = true
     },
-    deleteItem: function(index) {
+    deleteItem: function (index) {
       this.todos.splice(index, 1)
       todoStorage.setStorage(this.todos)
     },
-    checkedItem: function() {
+    checkedItem: function () {
       todoStorage.setStorage(this.todos)
-    },
+    }
   }
 })
