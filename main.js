@@ -12,8 +12,7 @@ new Vue({
   data () {
     return {
       newItem: '',
-      isEditable: false,
-      editingItemIndex: null,
+      editingItemIndex: undefined,
       todos: []
     }
   },
@@ -36,12 +35,11 @@ new Vue({
       this.todos[this.editingItemIndex].item = this.newItem
       todoStorage.setStorage(this.todos)
       this.newItem = ''
-      this.isEditable = false
+      this.editingItemIndex = undefined
     },
     editItem: function (index) {
       this.newItem = this.todos[index].item
       this.editingItemIndex = index
-      this.isEditable = true
     },
     deleteItem: function (index) {
       this.todos.splice(index, 1)
