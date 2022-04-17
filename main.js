@@ -13,7 +13,7 @@ new Vue({
     return {
       newItem: '',
       isEditable: false,
-      editingItemIndex: '',
+      editingItemIndex: null,
       todos: []
     }
   },
