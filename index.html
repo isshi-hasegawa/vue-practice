@@ -16,16 +16,18 @@
             </form>
             <ul>
                 <li v-for="(todo, index) in todos">
-                    <input type="checkbox" v-model="todo.isDone" @change="checkedItem">
-                    <span :class="{ done: todo.isDone }">
-                      {{ todo.item }}
-                    </span>
-                    <button @click="editItem(index)">
-                        Edit
-                    </button>
-                    <button @click="deleteItem(index)">
-                        Delete
-                    </button>
+                    <div :key="todo.id">
+                        <input type="checkbox" v-model="todo.isDone" @change="checkedItem">
+                        <span :class="{ done: todo.isDone }">
+                          {{ todo.item }}
+                        </span>
+                        <button @click="editItem(index)">
+                            Edit
+                        </button>
+                        <button @click="deleteItem(index)">
+                            Delete
+                        </button>
+                    </div>
                 </li>
             </ul>
         </div>
