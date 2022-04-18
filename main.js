@@ -23,6 +23,7 @@ new Vue({
     addItem: function () {
       if (this.newItem === '') return
       const todo = {
+        id: new Date().getTime().toString(16)  + Math.floor(Math.random()).toString(16),
         item: this.newItem,
         isDone: false
       }
