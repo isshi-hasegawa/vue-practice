@@ -11,8 +11,8 @@
             <h2>TODO List</h2>
             <form @submit.prevent>
                 <input type="text" v-model="newItem">
-                <button v-show="isNaN(editingItemIndex)" @click="addItem">Add</button>
-                <button v-show="!isNaN(editingItemIndex)" @click="updateItem">Update</button>
+                <button v-show="editingItemIndex === undefined" @click="addItem">Add</button>
+                <button v-show="editingItemIndex !== undefined" @click="updateItem">Update</button>
             </form>
             <ul>
                 <li v-for="(todo, index) in todos">
