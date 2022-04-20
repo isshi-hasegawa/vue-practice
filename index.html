@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todo List</title>
+    </head>
+    <body>
+        <div id="app">
+            <h2>TODO List</h2>
+            <form @submit.prevent>
+                <input type="text" v-model="newItem">
+                <button v-show="editingItemIndex === undefined" @click="addItem">Add</button>
+                <button v-show="editingItemIndex !== undefined" @click="updateItem">Update</button>
+            </form>
+            <ul>
+                <li v-for="(todo, index) in todos">
+                    <div :key="todo.id">
+                        <input type="checkbox" v-model="todo.isDone" @change="checkedItem">
+                        <span :class="{ done: todo.isDone }">
+                          {{ todo.item }}
+                        </span>
+                        <button @click="editItem(index)">
+                            Edit
+                        </button>
+                        <button @click="deleteItem(index)">
+                            Delete
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="./main.js"></script>
+</html>
